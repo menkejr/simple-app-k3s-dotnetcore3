@@ -1,5 +1,5 @@
-MYNAME="mikhail"
-MYDOCKERUSER="thecrazyrussian"
+MYNAME="chipchipperson"
+MYDOCKERUSER="menkejr"
 IMAGETAG=1
 customize:
 	mkdir -p kubernetes
@@ -13,7 +13,5 @@ publish:
 	docker push ${MYDOCKERUSER}/${MYNAME}-app-dotnet:${IMAGETAG}
 
 deploy:
-	kubectl apply -f kubernetes/deployment.yaml
-	kubectl apply -f kubernetes/service.yaml
-	kubectl apply -f kubernetes/ingress.yaml
+	kubectl apply -f kubernetes/deployment.yaml -f kubernetes/service.yaml -f kubernetes/ingress.yaml
 	@echo "Your application should be available at https://${MYNAME}.rancher.simpleblocks.net."

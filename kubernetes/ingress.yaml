@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: chipchipperson-app
+  annotations:
+    cert-manager.io/issuer: rancher
+    cert-manager.io/issuer-kind: Issuer
+spec:
+  rules:
+  - host: chipchipperson.rancher.simpleblocks.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: chipchipperson-app
+          servicePort: 80
+  tls:
+    - hosts:
+      - "chipchipperson.rancher.simpleblocks.net"
+      secretName: tls-ingress-chipchipperson

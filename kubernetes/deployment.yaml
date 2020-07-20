@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chipchipperson-app
+  labels:
+    app: chipchipperson-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chipchipperson-app
+  template:
+    metadata:
+      labels:
+        app: chipchipperson-app
+    spec:
+      containers:
+      - name: chipchipperson-app
+        image: docker.io/menkejr/chipchipperson-app-dotnet:1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
